@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Angular Examples - Controllers</title>
+		<!-- We include the angular library using a CDN -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+
+		<script>
+			// We first need to create a angular module.  Ours is called 'app'.
+			angular.module('app', []);
+
+			// We can now create a controller.
+			angular.module('app').controller('MainCtrl', function($scope) {
+				// Create a property called firstName on scope
+				$scope.firstName = 'Bobby';
+
+				// Create a function called getRandomNumber on scope
+				$scope.getRandomNumber = function() {
+					$scope.randomNumber = Math.round(Math.random()*100);
+				};
+			});
+		</script>
+	</head>
+
+	<!-- Notice that now we need to include the module name with ng-app -->
+	<body ng-app="app">
+
+		<!-- Everything inside this div has access to MainCtrl -->
+		<div ng-controller="MainCtrl">
+			<div>We can access any scope property:</div>
+			<p>Hello, {{firstName}}!</p>
+			<hr>
+
+			<div>We can also call scope functions:</div>
+			<input type="button" ng-click="getRandomNumber()" value="Get Random Number"></input>
+			<p>{{randomNumber}}<p>
+			<hr>
+		</div>
+
+		<a href="https://www.w3schools.com/angular/angular_controllers.asp" target="_blank">See W3School's tutorial on Angular Controllers.</a>
+
+	</body>
+
+</html>
