@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Angular Examples - $http</title>
+		<!-- We include the angular library using a CDN -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+
+		<script>
+			// We first need to create a angular module.  Ours is called 'app'.
+			angular.module('app', []);
+
+			// Notice that we have to inject $http
+			angular.module('app').controller('HttpCtrl', function($scope,$http) {
+				$http.get('/list').then(function(res) {
+					$scope.list = res.data;
+				});
+
+				$scope.getRandomNumber = function() {
+					$http.get('/random').then(function(res) {
+						$scope.randomNumber = res.data;
+					});
+				}
+			});
+		</script>
+	</head>
+
+	<!-- Notice that now we need to include the module name with ng-app -->
+	<body ng-app="app">
+
+		<!-- Everything inside this div has access to MainCtrl -->
+		<div ng-controller="HttpCtrl">
+			<div>List from the server:</div>
+			<p>{{list}}</p>
+			<hr>
+
+			<div>The same list iterated using ng-repeat:</div>
+			<ul>
+				<li ng-repeat="item in list">
+					{{item}}
+				</li>
+			</ul>
+			<hr>
+
+			<input type="button" ng-click="getRandomNumber()" value="Get Random Number from the server"></input>
+			<p>{{randomNumber}}<p>
+			<hr>
+
+		</div>
+
+		<a href="https://www.w3schools.com/angular/angular_controllers.asp" target="_blank">See W3School's tutorial on Angular Controllers.</a>
+
+	</body>
+
+</html>
