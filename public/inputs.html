@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Angular Examples - Inputs</title>
+		<!-- We include the angular library using a CDN -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+	</head>
+
+	<!-- Notice the ng-app attribute.  That tells angular that the body tag is the root element of our application  -->
+	<body ng-app>
+
+		<h3>Here are some examples of using ngModel with inputs:</h3>
+
+		<div>What is your name?</div>
+		<input ng-model="name" placeholder="Enter your name">
+		<p>Hello {{name}}</p>
+		<hr>
+
+		<div>Let's add some numbers:</div>
+		<input type="number" ng-model="number1"> + <input type="number" ng-model="number2"> =
+		{{number1 + number2}}
+		<hr>
+
+
+		Check out <a href="https://www.w3schools.com/angular/angular_model.asp" target="_blank">W3School's AngularJS Model</a>
+
+	</body>
+
+</html>
